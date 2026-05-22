@@ -21,6 +21,7 @@ All rules below are defaults and can be overridden by the user on request.
 - Prefer destructuring for objects and arrays, including function parameters. When a destructured name would be ambiguous without its source context, rename it inline rather than avoiding destructuring (e.g. `({ id: itemId, name }) => ({ itemId, name })` instead of `(item) => ({ itemId: item.id, name: item.name })`).
 - Boolean variables and props must use a semantic prefix: `is`, `are`, `has`, `should`, `can`, `did`, `will`, etc. (e.g. `isLoading`, `hasError`, `shouldRefetch`).
 - Prefer `async`/`await` over `.then()`/`.catch()` chains for Promise handling.
+- Do not use the `void` keyword as an expression/operator (for example, `void someAsyncCall()`) to suppress Promise handling. Prefer `await`, returning the Promise, or explicit error handling. Using `void` in type positions (for example, function return types) is allowed.
 - Prefer `.forEach()` and `.map()` over `for` loops where appropriate.
 - Prefer arrow function expressions over function declarations: `const foo = () => {}` not `function foo() {}`. Exceptions: class methods, object methods that use `this`, generator functions, and any context where hoisting is required.
 - Prefer `switch` over `if/else` chains when branching on the same variable or expression; use `if` for range/compound conditions.
