@@ -1,0 +1,8 @@
+{
+  "onStop": {
+    "**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}": [
+      "prettier --write {file}",
+      "eslint --max-warnings=0 {file}"
+    ]
+  }
+}

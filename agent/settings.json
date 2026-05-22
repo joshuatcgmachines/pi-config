@@ -14,6 +14,7 @@
   "packages": [
     "npm:@npm-ken/pi-bar",
     "npm:pi-research",
-    "npm:context-mode"
+    "npm:context-mode",
+    "npm:pi-edit-hooks"
   ]
 }
