@@ -10,7 +10,7 @@
     "anthropic/claude-opus-4-7"
   ],
   "enableInstallTelemetry": false,
-  "theme": "dark",
+  "theme": "nightowl",
   "packages": [
     "npm:@npm-ken/pi-bar",
     "npm:pi-research",
