@@ -1,3 +1,7 @@
 agent/sessions
 agent/auth.json
 .idea
+/logs/pi-research.jsonl
+/context-mode/sessions/context-mode.db
+/context-mode/sessions/context-mode.db-shm
+/context-mode/sessions/context-mode.db-wal

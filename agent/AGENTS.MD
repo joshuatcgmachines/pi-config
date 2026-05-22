@@ -1,0 +1,36 @@
+# Coding Style Rules
+
+All rules below are defaults and can be overridden by the user on request.
+
+## General
+
+- Default to smallest clear change that solves the request; avoid overengineering and YAGNI abstractions.
+- Keep one-off literals inline (for example: an error message used once, a single label, or a value with only one call site).
+- Introduce constants only when at least one is true:
+    - the value is reused in multiple places,
+    - it is a stable domain concept with a meaningful name,
+    - it is expected to change independently (config/tuning),
+    - inlining would hurt readability more than naming helps.
+- Prefer deleting or avoiding needless indirection over adding it.
+
+## TypeScript / JavaScript
+
+- Use `!!value` for boolean coercion, not `Boolean(value)`.
+- Write plain numeric literals without underscores: `10000`, not `10_000`.
+- Omit explicit return types when TypeScript can infer them; only add them when inference fails or the type would be ambiguous to a reader.
+- Prefer destructuring for objects and arrays, including function parameters. When a destructured name would be ambiguous without its source context, rename it inline rather than avoiding destructuring (e.g. `({ id: itemId, name }) => ({ itemId, name })` instead of `(item) => ({ itemId: item.id, name: item.name })`).
+- Boolean variables and props must use a semantic prefix: `is`, `are`, `has`, `should`, `can`, `did`, `will`, etc. (e.g. `isLoading`, `hasError`, `shouldRefetch`).
+- Prefer `async`/`await` over `.then()`/`.catch()` chains for Promise handling.
+- Prefer `.forEach()` and `.map()` over `for` loops where appropriate.
+- Prefer arrow function expressions over function declarations: `const foo = () => {}` not `function foo() {}`. Exceptions: class methods, object methods that use `this`, generator functions, and any context where hoisting is required.
+- Prefer `switch` over `if/else` chains when branching on the same variable or expression; use `if` for range/compound conditions.
+- Prefer named exports over default exports. Only use `export default` when required by a framework convention (e.g. Next.js page/layout files, dynamic `import()` with named-export limitations).
+- React component props types must be named after their component with a `Props` suffix: e.g. `MyComponentProps` for `MyComponent`.
+- Do not introduce single-use variables by default. Inline expressions/values when used once. Exception: keep variable when it materially improves readability, reduces duplicated logic, clarifies intent, or simplifies debugging.
+- In React code, do not add `useMemo`/`useCallback` by default. Use them only when there is a clear need: measured performance issue, expensive recalculation, or required referential stability for memoized consumers/effect dependencies.
+- In React code, use `useRef` only when necessary: imperative DOM operations, persistent mutable values that must not cause rerenders, or integration handles for third-party APIs. Do not use `useRef` for normal state or derived UI data.
+
+## TypeScript
+
+- Prefer narrow, explicit types over `any`; use `unknown` with narrowing for untrusted or runtime-boundary inputs.
+- Do not use `as const` unless absolutely necessary. Only use it when downstream types explicitly require exact literal inference or readonly tuple/object semantics that cannot be expressed cleanly another way.

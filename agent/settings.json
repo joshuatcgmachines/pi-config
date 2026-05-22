@@ -10,5 +10,10 @@
     "anthropic/claude-opus-4-7"
   ],
   "enableInstallTelemetry": false,
-  "theme": "dark"
+  "theme": "dark",
+  "packages": [
+    "npm:@npm-ken/pi-bar",
+    "npm:pi-research",
+    "npm:context-mode"
+  ]
 }
