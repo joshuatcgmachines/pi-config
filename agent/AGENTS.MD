@@ -35,3 +35,16 @@ All rules below are defaults and can be overridden by the user on request.
 
 - Prefer narrow, explicit types over `any`; use `unknown` with narrowing for untrusted or runtime-boundary inputs.
 - Do not use `as const` unless absolutely necessary. Only use it when downstream types explicitly require exact literal inference or readonly tuple/object semantics that cannot be expressed cleanly another way.
+
+## Database Schema Changes (Prisma)
+
+When the user suggests database schema changes, follow this sequence:
+
+1. Modify the Prisma schema first.
+2. Stop and ask the user to review and approve the schema changes.
+3. After approval, generate a migration without applying it:
+   - `npm run prisma-migrate-dev -- --create-only`
+4. Stop and ask the user to review and approve the generated `migration.sql`.
+5. After approval, apply the migration:
+   - `npm run prisma-migrate-dev`
+6. Create a `down.sql` file that reverts the migration.
