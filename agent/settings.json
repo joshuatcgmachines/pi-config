@@ -16,6 +16,7 @@
     "npm:pi-research",
     "npm:context-mode",
     "npm:pi-edit-hooks",
-    "npm:pi-obsidian"
+    "npm:pi-obsidian",
+    "npm:graphify-pi"
   ]
 }
