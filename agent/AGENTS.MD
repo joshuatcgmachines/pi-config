@@ -23,6 +23,7 @@ All rules below are defaults and can be overridden by the user on request.
 - Prefer `async`/`await` over `.then()`/`.catch()` chains for Promise handling.
 - Do not use the `void` keyword as an expression/operator (for example, `void someAsyncCall()`) to suppress Promise handling. Prefer `await`, returning the Promise, or explicit error handling. Using `void` in type positions (for example, function return types) is allowed.
 - Prefer `.forEach()` and `.map()` over `for` loops where appropriate.
+- Prefer arrays over `Set`/`Map`. Use `Set` only when de-duplication is necessary. Avoid `Map` unless the user explicitly requests it.
 - Prefer arrow function expressions over function declarations: `const foo = () => {}` not `function foo() {}`. Exceptions: class methods, object methods that use `this`, generator functions, and any context where hoisting is required.
 - Prefer `switch` over `if/else` chains when branching on the same variable or expression; use `if` for range/compound conditions.
 - Do not use nested ternary operators. Use `if`/`else`, early returns, or extracted helper logic for multi-branch conditions.
